@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ContactDamage : MonoBehaviour
 {
-    public float damage;
+    public int damage;
     public float knockback = 5f;
     Rigidbody2D rb;
 
