@@ -19,7 +19,7 @@ public class PlayerStats : MonoBehaviour
 
         // Stat upgrades count
     // Punch
-    int punch = 0;
+    public int punch = 0;
 
     void Awake()
     {
@@ -45,7 +45,7 @@ public class PlayerStats : MonoBehaviour
         int defMod = 1 + punch;
 
         float damage = defMod * 1f;
-        float range = 1f + (defMod * 0f);
+        float range = defMod * 1f;
         float knockBack = defMod * 1f;
 
         float[] pStat = new float[3] { damage, range, knockBack };
