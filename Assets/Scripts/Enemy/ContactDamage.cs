@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ContactDamage : MonoBehaviour
 {
-    public int damage;
     public float knockback = 5f;
     Rigidbody2D rb;
 
@@ -31,7 +30,7 @@ public class ContactDamage : MonoBehaviour
     {
         if (other.transform.CompareTag("Player") && damagetimer <= 0f)
         {
-            PlayerStats.Instance.TakeDamage(damage);
+            PlayerStats.Instance.TakeDamage(1);
             damagetimer += 1f;
 
             if (rb == null)

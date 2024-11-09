@@ -13,9 +13,9 @@ public class PlayerStats : MonoBehaviour
     public int maxHealth = 3;
     public int currentHealth = 3;
 
-    // Stat upgrades
-    public float currentMana = 0f;
-    public float maxMana = 1f;
+    public int hunger = 10;
+    int hungerScale = 2;
+    int totalDevour = 0;
 
         // Stat upgrades count
     // Punch
@@ -45,29 +45,55 @@ public class PlayerStats : MonoBehaviour
         int defMod = 1 + punch;
 
         float damage = defMod * 1f;
-        float range = defMod * 1f;
-        float knockBack = defMod * 1f;
+        float range = (punch * .05f) + 2.3f;
+        float knockBack = (defMod * 0.3f) + 3;
+        float coolDown = Mathf.Clamp(4.1f - (defMod * 0.1f), 0.5f, 4.1f); // Linearly from 5 to 0.5 seconds cooldown
 
-        float[] pStat = new float[3] { damage, range, knockBack };
+        float[] pStat = new float[4] { damage, range, knockBack, coolDown};
         return pStat;
+    }
+
+    // Ability stats
+    public float[] GetWhirlwind()
+    {
+        int defMod = 1 + punch;
+
+        float damage = defMod * 1.7f;
+        float range = (punch * .05f) + 3f;
+        float knockBack = (defMod * 1f) + 3;
+        float coolDown = Mathf.Clamp(4.1f - (defMod * 0.1f), 0.5f, 4.1f); // Linearly from 5 to 0.5 seconds cooldown
+
+        float[] wStat = new float[4] { damage, range, knockBack, coolDown };
+        return wStat;
+    }
+
+    public void PlayerTakedown(int hungerAdd)
+    {
+        if (hunger > 0)
+        {
+            hunger -= hungerAdd;
+        }
+    }
+
+    public void DevourSuccess()
+    {
+        hunger = 10 + (hungerScale * totalDevour);
+        // Upscale stats & Abilities?
+    }
+
+    public void SetUiCd(int type, float time)
+    {
+
     }
 
     public void TakeDamage (int damage)
     {
         currentHealth -= damage;
-        healthbar.SetHealth(currentHealth);
+        //healthbar.SetHealth(currentHealth);
         if (currentHealth <= 0)
         {
             Die();
         }
-    }
-    public void HealDamage(float damage)
-    {
-        int intDmg = Mathf.CeilToInt(damage);
-
-        currentHealth += intDmg;
-        currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
-        healthbar.SetHealth(currentHealth);
     }
 
     // Death or other meta stuff ------
@@ -81,11 +107,5 @@ public class PlayerStats : MonoBehaviour
     {
         // Hard coded to match load screen time
         yield return new WaitForSeconds(2f);
-        RespawnPlayer();
-    }
-
-    public void RespawnPlayer ()
-    {
-
     }
 }
