@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
     public bool invincible = false;
 
     public int hunger = 2;
-    int hungerScale = 2;
+    int hungerScale = 4;
     int totalDevour = 0;
 
         // Stat upgrades count
@@ -108,6 +108,7 @@ public class PlayerStats : MonoBehaviour
 
     public void DevourSuccess()
     {
+        totalDevour++;
         hunger = hungerScale + (hungerScale * totalDevour);
         punch++;
         // Upscale stats & Abilities?

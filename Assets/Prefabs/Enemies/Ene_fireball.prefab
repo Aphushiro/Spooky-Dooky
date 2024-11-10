@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3946003184665773355}
   - component: {fileID: 5014176780338981564}
   - component: {fileID: 1585370370034143806}
+  - component: {fileID: 8435102790108245582}
   m_Layer: 0
   m_Name: Ene_fireball
   m_TagString: Untagged
@@ -195,3 +196,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletSpeed: 3
   EnemExplosion: {fileID: 3588210332601527532, guid: 3bae070798ec9c34da651f3cb96c6828, type: 3}
+--- !u!114 &8435102790108245582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105131780168055993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153337ad4641c1449b50c6bf8fbc6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxObject: {fileID: 2917325885742931284, guid: 6b6cf21318df14745ad632d11c176e85, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 9cad8770fad016b4cb4dace22be2d156, type: 3}
+  - {fileID: 8300000, guid: a50b5ac62c0a4c84a87476969ddb4133, type: 3}
+  pitch: 1

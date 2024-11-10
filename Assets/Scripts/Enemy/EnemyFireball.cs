@@ -14,6 +14,9 @@ public class EnemyFireball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetComponent<SfxPlayer>().PlaySfx();
+
+
         float rn = Random.Range(0, Mathf.PI * 2);
 
         float x = Mathf.Sin(rn);
