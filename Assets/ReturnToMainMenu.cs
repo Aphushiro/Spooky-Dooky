@@ -6,6 +6,7 @@ public class ReturnToMainMenu : MonoBehaviour
 {
     public void ReturnButton()
     {
+        PlayerStats.Instance.UiExitGame();
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 }

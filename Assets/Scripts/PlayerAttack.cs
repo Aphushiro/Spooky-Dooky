@@ -169,6 +169,8 @@ public class PlayerAttack : MonoBehaviour
         GameObject attackAnim = Instantiate(whirlwindAnimPrefab, transform.position, Quaternion.identity);
         attackAnim.transform.localScale = attackSize;
         Destroy(attackAnim, 0.25f);
+
+        if (isFrenzy) { return; }
         StartCoroutine(AbilityCd(wStats[3]));
     }
 
@@ -300,5 +302,6 @@ public class PlayerAttack : MonoBehaviour
         }
         isFrenzy = false;
         EndInvincible(0.5f);
+        StartCoroutine(AbilityCd(3f));
     }
 }

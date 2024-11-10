@@ -171,7 +171,7 @@ public class PlayerStats : MonoBehaviour
 
     public void UiExitGame()
     {
-        SceneManager.LoadScene(0);
+        //SceneManager.LoadScene(0);
         Destroy(gameObject);
     }
 
