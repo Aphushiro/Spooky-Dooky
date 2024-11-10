@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -26,6 +28,10 @@ public class PlayerStats : MonoBehaviour
     // Stat upgrades count
     // Punch
     public int punch = 0;
+
+    public TMP_Text survivetext;
+    public TMP_Text timetText;
+    public RectTransform diePanel;
 
     void Awake()
     {
@@ -157,8 +163,10 @@ public class PlayerStats : MonoBehaviour
         sound.clips = dieSound;
         Instantiate(sfx, Camera.main.transform.position, Quaternion.identity);
 
+        diePanel.gameObject.SetActive(true); // Toggle active true for RectTransform
+
         OnDeath.Invoke();
-        UiExitGame();
+        //UiExitGame();
     }
 
     public void UiExitGame()

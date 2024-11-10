@@ -6,11 +6,17 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    float timer;
+    public float timer;
     public TMP_Text timerText;
+    public TMP_Text scoreText;
+    public GameObject playerStats;
     private void FixedUpdate()
     {
-        timer += Time.deltaTime;
-        timerText.text = Mathf.Floor(timer).ToString("F0");
+        if (playerStats.GetComponent<PlayerStats>().currentHealth > 0)
+        {
+            timer += Time.deltaTime;
+            timerText.text = Mathf.Floor(timer).ToString("F0");
+            scoreText.text = "You survived for " + Mathf.Floor(timer).ToString("F0") + " seconds!";
+        }
     }
 }
