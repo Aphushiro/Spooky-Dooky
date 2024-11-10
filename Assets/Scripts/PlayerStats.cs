@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
@@ -17,6 +18,9 @@ public class PlayerStats : MonoBehaviour
     public int hunger = 2;
     int hungerScale = 4;
     int totalDevour = 0;
+
+    public AudioClip[] hurtSounds;
+    public AudioClip[] dieSound;
 
         // Stat upgrades count
     // Punch
@@ -128,6 +132,11 @@ public class PlayerStats : MonoBehaviour
     {
         if (invincible) { return; }
 
+        GameObject sfx = new GameObject("_sfx");
+        SfxPlayer sound = sfx.AddComponent<SfxPlayer>();
+        sound.clips = hurtSounds;
+        Instantiate(sfx, Camera.main.transform.position, Quaternion.identity);
+
         currentHealth -= damage;
         //healthbar.SetHealth(currentHealth);
         if (currentHealth <= 0)
@@ -139,13 +148,19 @@ public class PlayerStats : MonoBehaviour
     // Death or other meta stuff ------
     public void Die()
     {
+        GameObject sfx = new GameObject("_sfx");
+        SfxPlayer sound = sfx.AddComponent<SfxPlayer>();
+        sound.clips = dieSound;
+        Instantiate(sfx, Camera.main.transform.position, Quaternion.identity);
+
         OnDeath.Invoke();
-        StartCoroutine(ResetWorld());
+        UiExitGame();
     }
 
-    IEnumerator ResetWorld()
+    public void UiExitGame()
     {
-        // Hard coded to match load screen time
-        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(0);
+        Destroy(gameObject);
     }
+
 }

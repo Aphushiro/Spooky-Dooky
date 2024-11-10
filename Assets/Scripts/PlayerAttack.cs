@@ -27,7 +27,7 @@ public class PlayerAttack : MonoBehaviour
     bool devourReady = true; // Independant of whether or not hunger is ready
     bool isDevouring = false;
 
-
+    public SfxPlayer[] sfxPlayers;
 
     private void Start()
     {
@@ -98,6 +98,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator DelayAttack(float seconds)
     {
         Punch();
+        sfxPlayers[0].PlaySfx();
         playerAnim.SetTrigger("Swipe");
         yield return new WaitForSeconds(seconds);
         autoAttackBlock = false;
@@ -151,6 +152,8 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
+        sfxPlayers[0].PlaySfx();
+
         // Punch GFX
         Vector3 attackSize = new Vector3(wStats[1], wStats[1], 1f) * 2;
         GameObject attackAnim = Instantiate(whirlwindAnimPrefab, transform.position, Quaternion.identity);
@@ -188,6 +191,7 @@ public class PlayerAttack : MonoBehaviour
             negBullet.GetComponent<PlayerBullet>().SetValues(pierce, bStats[0], bStats[2]);
             posBullet.GetComponent<PlayerBullet>().SetValues(pierce, bStats[0], bStats[2]);
         }
+        sfxPlayers[1].PlaySfx();
         StartCoroutine(AbilityCd(bStats[3]));
     }
 
@@ -200,6 +204,7 @@ public class PlayerAttack : MonoBehaviour
             GameObject fBall = Instantiate(friendlyFireball, transform.position, Quaternion.identity);
             fBall.GetComponent<PlayerFireball>().bulletSpeed = 3f;
         }
+        sfxPlayers[2].PlaySfx();
         StartCoroutine(AbilityCd(fStats[2]));
     }
 
@@ -221,6 +226,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator DevourCd ()
     {
+        sfxPlayers[4].PlaySfx();
         isDevouring = true;
         yield return new WaitForSeconds (0.2f);
 
@@ -267,6 +273,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator Frenzy ()
     {
+        sfxPlayers[3].PlaySfx();
         float animTime = 0.25f;
         float frenzyTime = 5f;
         int whirlCount = Mathf.FloorToInt(frenzyTime / animTime); // 20 * 0,25sec = 5 seconds
