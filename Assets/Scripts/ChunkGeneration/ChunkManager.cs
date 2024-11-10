@@ -20,10 +20,11 @@ public class ChunkManager : MonoBehaviour
     {
         chunkSpawnDistance = chunkSpawnDistanceEditable;
         objectSpawnDistance = objectSpawnDistanceEditable;
-
+        chunks.Add(firstChunk);
+        chunkPosition.Add(firstChunk.transform.position);
         firstChunk.GetComponent<GenerateAround>().Generate();
-        ChunkManager.chunks.Add(firstChunk);
-        ChunkManager.chunkPosition.Add(firstChunk.transform.position);
+        //ChunkManager.chunks.Add(firstChunk);
+        //ChunkManager.chunkPosition.Add(firstChunk.transform.position);
     }
 
     private void FixedUpdate()

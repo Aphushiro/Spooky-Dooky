@@ -157,3 +157,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4cd743c182328440b2b5320d6c2cbcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chunkAssets:
+  - {fileID: 7271173032583806228, guid: d6d64ad732457ee46847769ae53068a3, type: 3}
+  - {fileID: 7271173032583806228, guid: bbb630eef2b536047ad8ecbd3c9000db, type: 3}
+  - {fileID: 7271173032583806228, guid: aac77a88834b10d49a3f04da069bef2a, type: 3}
+  - {fileID: 7271173032583806228, guid: 8399e7f82ce45df4081f993deac44797, type: 3}
+  - {fileID: 7271173032583806228, guid: d842a387ebb1bab43843b27330b54eae, type: 3}
+  - {fileID: 7271173032583806228, guid: dc54a5b68e4bc994db1cbdf870893086, type: 3}
+  weights: 000000000a000000140000001e00000023000000280000002a000000
+  ObjectSpawnDistance: 100

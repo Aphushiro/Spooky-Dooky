@@ -15,12 +15,7 @@ public class PlayerChunkPosition : MonoBehaviour
     }
     void FixedUpdate()
     {
-        time += Time.deltaTime;
-        if (time > 1)
-        {
-            CheckChunk();
-            time = 0;
-        }
+        CheckChunk(); 
     }
     void CheckChunk()
     {
@@ -30,16 +25,19 @@ public class PlayerChunkPosition : MonoBehaviour
             {
                 currentChunk = chunk;
             }
-            if (Vector2.Distance(chunk.transform.position, transform.position) > ChunkManager.chunkSpawnDistance*5)
-            {
-                ChunkManager.chunks.Remove(chunk);
-                ChunkManager.chunkPosition.Remove(chunk.transform.position);
-                Destroy(chunk);
-            }
+            
+            
         }
         if(currentChunk != oldChunk)
         {
-            currentChunk.GetComponent<GenerateAround>().Generate();
+            foreach (GameObject chunk in ChunkManager.chunks)
+            {
+                if(Vector2.Distance(chunk.transform.position, currentChunk.transform.position) > ChunkManager.chunkSpawnDistance*1.5f)
+                {
+                    Debug.Log("Chunk Moved");
+                    chunk.transform.position = currentChunk.transform.position + (oldChunk.transform.position - chunk.transform.position);
+                }
+            }
             oldChunk = currentChunk;
         }
     }
