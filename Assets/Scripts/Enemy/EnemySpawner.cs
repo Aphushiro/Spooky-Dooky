@@ -27,14 +27,18 @@ public class EnemySpawner : MonoBehaviour
     Vector2 camPos;
     float spawnDist = 13;
 
+    float actualLiteralTimer = 0f;
+
     void Start()
     {
         StartCoroutine("LetThemBreathe");
+        actualLiteralTimer = 0f;
     }
 
     private void Update()
     {
         camPos = Camera.main.transform.position;
+        actualLiteralTimer += Time.deltaTime;
     }
 
     IEnumerator LetThemBreathe()
@@ -45,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
 
     void ScaleEnemies()
     {
-        float t = Time.time / 7f; // +1 every 7 second
+        float t = actualLiteralTimer / 7f; // +1 every 7 second
         forkQueue = Mathf.FloorToInt(forkBase * forkScale * t);
         gunQueue = Mathf.FloorToInt(gunBase * gunScale * t);
         torchQueue = Mathf.FloorToInt(torchBase * torchScale * t);
@@ -60,7 +64,7 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine("SpawnGun");
         StartCoroutine("SpawnTorch");
 
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(20f);
         StartCoroutine("QueueNextWave");
     }
 

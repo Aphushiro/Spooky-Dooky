@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
     Animator playerAnim;
 
     bool canAttack = true;
+    bool isFrenzy = false;
 
     bool autoAttackBlock = false;
     public GameObject attackAnimPrefab;
@@ -32,6 +33,15 @@ public class PlayerAttack : MonoBehaviour
     private void Start()
     {
         playerAnim = GetComponentInChildren<Animator>();
+
+        StartCoroutine(StopThatBug());
+    }
+
+    IEnumerator StopThatBug()
+    {
+        PlayerStats.Instance.SetInvincible(false);
+        yield return new WaitForSeconds(10);
+        StartCoroutine(StopThatBug());
     }
 
     private void Update()
@@ -246,7 +256,9 @@ public class PlayerAttack : MonoBehaviour
                 int newAbility = collision.collider.GetComponent<EnemyStats>().GetDevoured(400, transform.position, 20);
                 isDevouring = false;
                 OnDevourHit(newAbility);
+                return;
             }
+            PlayerStats.Instance.SetInvincible(false);
         }
     }
 
@@ -273,6 +285,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator Frenzy ()
     {
+        isFrenzy = true;
         sfxPlayers[3].PlaySfx();
         float animTime = 0.25f;
         float frenzyTime = 5f;
@@ -285,6 +298,7 @@ public class PlayerAttack : MonoBehaviour
             Whirlwind();
             yield return new WaitForSeconds(animTime);
         }
+        isFrenzy = false;
         EndInvincible(0.5f);
     }
 }

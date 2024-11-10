@@ -134,6 +134,7 @@ public class PlayerStats : MonoBehaviour
 
         GameObject sfx = new GameObject("_sfx");
         SfxPlayer sound = sfx.AddComponent<SfxPlayer>();
+        AudioSource src = sfx.AddComponent<AudioSource>();
         sound.clips = hurtSounds;
         Instantiate(sfx, Camera.main.transform.position, Quaternion.identity);
 
@@ -150,6 +151,7 @@ public class PlayerStats : MonoBehaviour
     {
         GameObject sfx = new GameObject("_sfx");
         SfxPlayer sound = sfx.AddComponent<SfxPlayer>();
+        AudioSource src = sfx.AddComponent<AudioSource>();
         sound.clips = dieSound;
         Instantiate(sfx, Camera.main.transform.position, Quaternion.identity);
 

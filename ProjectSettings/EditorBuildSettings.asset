@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: cd6b04b8e18e9f64f97b5cbc3cdd4a8e
+  - enabled: 1
+    path: Assets/Scenes/JesperScene.unity
+    guid: ae1ad227e7c5f794f849d43403e50776
   m_configObjects: {}
