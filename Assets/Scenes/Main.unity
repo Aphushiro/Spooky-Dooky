@@ -267,6 +267,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackAnimPrefab: {fileID: 7396228998882838459, guid: 7a2330c6b1fb5e54fb9be30cea226190, type: 3}
+  whirlwindAnimPrefab: {fileID: 7396228998882838459, guid: 368f5ef425996204985a68d3fc09dd1e, type: 3}
+  bulletPrefab: {fileID: 325705671361583184, guid: 838ac30ef6533e04ebe54c50914848e4, type: 3}
+  friendlyFireball: {fileID: 1105131780168055993, guid: 1d78d9d42cb426741917239bb24ad23b, type: 3}
+  attackType: 0
+  blockAbility: 0
 --- !u!58 &172928391
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -514,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb11b8e58c02274fbfd9c60c7ea5d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pitchFork: {fileID: 6759305570166412451, guid: b27ae88f74c4f6848a7bb250b82717f4, type: 3}
+  pitchFork: {fileID: 6759305570166412451, guid: 59b43bdd82dc47246a148dd8b3f7c31c, type: 3}
 --- !u!1 &2063863735
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,7 +570,8 @@ MonoBehaviour:
   healthbar: {fileID: 0}
   maxHealth: 3
   currentHealth: 3
-  hunger: 0
+  invincible: 0
+  hunger: 2
   punch: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

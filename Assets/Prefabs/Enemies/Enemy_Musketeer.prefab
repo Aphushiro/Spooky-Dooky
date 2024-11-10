@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: -7490295694781517445}
   - component: {fileID: 8523210021670110714}
   - component: {fileID: 9050209703874139963}
-  - component: {fileID: 8794885184988300771}
-  - component: {fileID: 3388903313144968103}
   - component: {fileID: 3349078183419663249}
   - component: {fileID: 1758881110635176754}
+  - component: {fileID: 8841424354743073424}
+  - component: {fileID: 6881171625596283521}
+  - component: {fileID: 4173524238888349038}
   m_Layer: 0
-  m_Name: Enemy_Pitchfork
+  m_Name: Enemy_Musketeer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.66626126, g: 1, b: 0.5566037, a: 1}
+  m_Color: {r: 0.93962264, g: 0.8241637, b: 0.48044848, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -106,7 +107,7 @@ MonoBehaviour:
   health: 3
   hungerCount: 1
   miniBoss: 0
-  devourPower: 1
+  devourPower: 2
 --- !u!114 &8523210021670110714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,33 +149,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8794885184988300771
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759305570166412451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3b6e219a76266494d9aa8788f8c01c7c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockback: 5
---- !u!114 &3388903313144968103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6759305570166412451}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4869928a1efc96a48b2a982b20486d89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 400
-  force: {x: 0, y: 0}
 --- !u!58 &3349078183419663249
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -232,3 +206,45 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 875f8487f660c9c4c8cbb68a59c74d6b, type: 3}
   - {fileID: 8300000, guid: db61f894f0bb49741aed2bdc6656127f, type: 3}
   pitch: 1
+--- !u!114 &8841424354743073424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759305570166412451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5af00fc18c9f2374f909a1e5af4aa043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 250
+  force: {x: 0, y: 0}
+  backPedalDist: 5
+--- !u!114 &6881171625596283521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759305570166412451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6e219a76266494d9aa8788f8c01c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockback: 5
+--- !u!114 &4173524238888349038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6759305570166412451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 909bf33ebfb481043ad1950ceea77211, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startTimeBtwShots: 4
+  bullet: {fileID: 1105131780168055993, guid: 279cac5f9f280c649b9f9a90598cd474, type: 3}

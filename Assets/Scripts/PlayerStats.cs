@@ -12,8 +12,9 @@ public class PlayerStats : MonoBehaviour
 
     public int maxHealth = 3;
     public int currentHealth = 3;
+    public bool invincible = false;
 
-    public int hunger = 10;
+    public int hunger = 2;
     int hungerScale = 2;
     int totalDevour = 0;
 
@@ -35,17 +36,13 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-
-    }
 
     public float[] GetPunch()
     {
         int defMod = 1 + punch;
 
         float damage = defMod * 1f;
-        float range = (punch * .05f) + 2.3f;
+        float range = (punch * .035f) + 1f;
         float knockBack = (defMod * 0.3f) + 3;
         float coolDown = Mathf.Clamp(4.1f - (defMod * 0.1f), 0.5f, 4.1f); // Linearly from 5 to 0.5 seconds cooldown
 
@@ -58,13 +55,47 @@ public class PlayerStats : MonoBehaviour
     {
         int defMod = 1 + punch;
 
-        float damage = defMod * 1.7f;
-        float range = (punch * .05f) + 3f;
+        float damage = defMod * 2f;
+        float range = (punch * .05f) + 2f;
         float knockBack = (defMod * 1f) + 3;
-        float coolDown = Mathf.Clamp(4.1f - (defMod * 0.1f), 0.5f, 4.1f); // Linearly from 5 to 0.5 seconds cooldown
+
+        float basecd = 8f;
+        float downBy = defMod * 0.1f;
+        float coolDown = Mathf.Clamp(basecd - downBy, 0.9f, basecd);
 
         float[] wStat = new float[4] { damage, range, knockBack, coolDown };
         return wStat;
+    }
+
+    public float[] GetBulletHell()
+    {
+        int defMod = 1 + punch;
+
+        float damage = defMod * 1.5f;
+        float count = defMod * 0.5f;
+        float knockBack = (defMod * 1f) + 3;
+
+        float basecd = 1f;
+        float downBy = defMod * 0.08f;
+        float coolDown = Mathf.Clamp(basecd - downBy, 0.25f, basecd);
+
+        float[] bStat = new float[4] { damage, count, knockBack, coolDown };
+        return bStat;
+    }
+
+    public float[] GetFireball()
+    {
+        int defMod = 1 + punch;
+
+        float damage = defMod * 1.5f;
+        float count = defMod * 0.3f;
+
+        float basecd = 1f;
+        float downBy = defMod * 0.08f;
+        float coolDown = Mathf.Clamp(basecd - downBy, 0.25f, basecd);
+
+        float[] fStat = new float[3] { damage, count, coolDown };
+        return fStat;
     }
 
     public void PlayerTakedown(int hungerAdd)
@@ -77,7 +108,8 @@ public class PlayerStats : MonoBehaviour
 
     public void DevourSuccess()
     {
-        hunger = 10 + (hungerScale * totalDevour);
+        hunger = hungerScale + (hungerScale * totalDevour);
+        punch++;
         // Upscale stats & Abilities?
     }
 
@@ -86,8 +118,15 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+    public void SetInvincible(bool setTo)
+    {
+        invincible = setTo;
+    }
+
     public void TakeDamage (int damage)
     {
+        if (invincible) { return; }
+
         currentHealth -= damage;
         //healthbar.SetHealth(currentHealth);
         if (currentHealth <= 0)

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -13,12 +14,22 @@ public class PlayerAttack : MonoBehaviour
 
     bool autoAttackBlock = false;
     public GameObject attackAnimPrefab;
+    public GameObject whirlwindAnimPrefab;
+    public GameObject bulletPrefab;
+    public GameObject friendlyFireball;
 
-    int attackType = 0; // None, Pitch, Musketeer, Torcher
+    [SerializeField]
+    int attackType = 1; // None, Pitch, Musketeer, Torcher
+    [SerializeField]
     bool blockAbility = false;
 
     bool devourReady = true; // Independant of whether or not hunger is ready
     bool isDevouring = false;
+
+    private void Start()
+    {
+
+    }
 
     private void Update()
     {
@@ -49,21 +60,27 @@ public class PlayerAttack : MonoBehaviour
         AutoAttack();
     }
 
-    void AbilityMove()
+    private void AbilityMove()
     {
         if (canAttack == false) { return; }
         if (blockAbility) { return; }
 
+        blockAbility = true;
         switch (attackType) // None, Pitch, Musketeer, Torcher
         {
             case 1 :
                 Whirlwind();
                 break;
 
+            case 2 :
+                BulletHell();
+                break;
+            case 3 :
+                FireballRain();
+                break;
             default:
                 break;
         }
-        blockAbility = true;
     }
 
     private void AutoAttack()
@@ -85,13 +102,13 @@ public class PlayerAttack : MonoBehaviour
     private void Punch()
     {
         float[] pStats = PlayerStats.Instance.GetPunch();               // { damage, range, knockback, cooldown }
-        float dist = (pStats[1] * 0.5f) + (transform.localScale.x / 2);
+        float dist = pStats[1] + (transform.localScale.x / 2);
 
         Vector2 attackPos = transform.position + (cursorDiff * dist);
         Collider2D[] cols = Physics2D.OverlapCircleAll(attackPos, pStats[1]);
 
         // Punch GFX
-        Vector3 attackSize = new Vector3(pStats[1], pStats[1], 1f);
+        Vector3 attackSize = new Vector3(pStats[1], pStats[1], 1f) * 2;
         GameObject attackAnim = Instantiate(attackAnimPrefab, attackPos, Quaternion.Euler(cursorRotation));
         attackAnim.transform.localScale = attackSize;
         Destroy(attackAnim, 0.25f);
@@ -110,11 +127,11 @@ public class PlayerAttack : MonoBehaviour
     // Abilities
     IEnumerator AbilityCd(float time)
     {
+        Debug.Log("Ability CD: " + time);
         PlayerStats.Instance.SetUiCd(attackType, time);
         yield return new WaitForSeconds(time);
         blockAbility = false;
     }
-
 
     private void Whirlwind()
     {
@@ -129,14 +146,66 @@ public class PlayerAttack : MonoBehaviour
                 cols[i].GetComponent<EnemyStats>().Takedamage(wStats[0], transform.position, wStats[2]);
             }
         }
-        StartCoroutine(AbilityCd(wStats[4]));
+
+        // Punch GFX
+        Vector3 attackSize = new Vector3(wStats[1], wStats[1], 1f) * 2;
+        GameObject attackAnim = Instantiate(whirlwindAnimPrefab, transform.position, Quaternion.identity);
+        attackAnim.transform.localScale = attackSize;
+        Destroy(attackAnim, 0.25f);
+        StartCoroutine(AbilityCd(wStats[3]));
     }
 
+    private void BulletHell()
+    {
+        float speed = 9f;
+        float[] bStats = PlayerStats.Instance.GetBulletHell();
+        bool pierce = true;
+        float rad = Mathf.Deg2Rad * 9f;
+
+        for (int i = 0;i < Mathf.CeilToInt(bStats[1]) ;i++)
+        {
+            rad *= (i + 1);
+            GameObject negBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Rigidbody2D nRb = negBullet.GetComponent<Rigidbody2D>();
+
+            GameObject posBullet = Instantiate(bulletPrefab, transform.position, Quaternion.identity);
+            Rigidbody2D pRb = posBullet.GetComponent<Rigidbody2D>();
+
+            float cursorAng = Mathf.Atan2(cursorDiff.y, cursorDiff.x);
+
+            Vector2 neg = new Vector2(Mathf.Cos(cursorAng + rad), Mathf.Sin(cursorAng + rad));
+            Vector2 pos = new Vector2(Mathf.Cos(cursorAng - rad), Mathf.Sin(cursorAng - rad));
+
+            //Debug.Log("Neg: " + neg + "\nPos: " + pos);
+
+            nRb.AddForce(neg * speed, ForceMode2D.Impulse);
+            pRb.AddForce(pos * speed, ForceMode2D.Impulse);
+
+            negBullet.GetComponent<PlayerBullet>().SetValues(pierce, bStats[0], bStats[2]);
+            posBullet.GetComponent<PlayerBullet>().SetValues(pierce, bStats[0], bStats[2]);
+        }
+        StartCoroutine(AbilityCd(bStats[3]));
+    }
+
+    private void FireballRain()
+    {
+        float[] fStats = PlayerStats.Instance.GetFireball();
+
+        for (int i = 0; i < Mathf.FloorToInt(fStats[1]) + 1; i++)
+        {
+            GameObject fBall = Instantiate(friendlyFireball, transform.position, Quaternion.identity);
+            fBall.GetComponent<PlayerFireball>().bulletSpeed = 3f;
+        }
+        StartCoroutine(AbilityCd(fStats[2]));
+    }
+
+    // Devouring
     private void Devour()
     {
         if (PlayerStats.Instance.hunger > 0) { return; }
         if (devourReady == false) { return; }
         
+        PlayerStats.Instance.SetInvincible(true);
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         GetComponent<PlayerMovement>().ToggleCanMove();
         rb.velocity = Vector3.zero;
@@ -154,7 +223,7 @@ public class PlayerAttack : MonoBehaviour
         GetComponent<PlayerMovement>().ToggleCanMove();
         isDevouring = false;
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1.5f);
         devourReady = true;
     }
 
@@ -164,8 +233,47 @@ public class PlayerAttack : MonoBehaviour
         {
             if (collision.collider.CompareTag("Enemy"))
             {
-                int newShape = collision.collider.GetComponent<EnemyStats>().GetDevoured(400, transform.position, 20);
+                int newAbility = collision.collider.GetComponent<EnemyStats>().GetDevoured(400, transform.position, 20);
+                isDevouring = false;
+                OnDevourHit(newAbility);
             }
         }
+    }
+
+    IEnumerator EndInvincible (float time)
+    {
+        yield return new WaitForSeconds (time);
+        PlayerStats.Instance.SetInvincible(false);
+    }
+
+    private void OnDevourHit(int ability)
+    {
+        Debug.Log("Devoured type: " + ability);
+        if (ability == 0)
+        {
+            EndInvincible(0.5f);
+        } else
+        {
+            attackType = ability;
+            PlayerStats.Instance.DevourSuccess();
+            StartCoroutine(Frenzy());
+        }
+
+    }
+
+    IEnumerator Frenzy ()
+    {
+        float animTime = 0.25f;
+        float frenzyTime = 5f;
+        int whirlCount = Mathf.FloorToInt(frenzyTime / animTime); // 20 * 0,25sec = 5 seconds
+
+        Debug.Log(whirlCount);
+
+        for (int i = 0; i < whirlCount; i++)
+        {
+            Whirlwind();
+            yield return new WaitForSeconds(animTime);
+        }
+        EndInvincible(0.5f);
     }
 }

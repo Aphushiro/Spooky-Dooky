@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -16,11 +17,15 @@ public class EnemySpawner : MonoBehaviour
     int waveCount = 0;
 
     Vector2 camPos;
-    float spawnDist = 8;
+    float spawnDist = 13;
 
     void Start()
     {
         StartCoroutine("LetThemBreathe");
+    }
+
+    private void Update()
+    {
         camPos = Camera.main.transform.position;
     }
 
@@ -58,11 +63,10 @@ public class EnemySpawner : MonoBehaviour
         float y = Mathf.Cos(rn);
 
         Vector2 normPos = new Vector3(x, y);
-        normPos.Normalize();
 
-        Vector2 spawnPos = normPos - camPos;
+        Vector2 spawnPos = camPos + (normPos * ranDist);
 
-        Instantiate(enemy, spawnPos * ranDist, Quaternion.identity);
+        Instantiate(enemy, spawnPos, Quaternion.identity);
     }
 
     IEnumerator SpawnPitch()
