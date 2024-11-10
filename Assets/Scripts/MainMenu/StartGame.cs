@@ -7,6 +7,6 @@ public class StartGame : MonoBehaviour
 {
     public void StartGameButton()
     {
-        SceneManager.LoadScene("Main");//Remeber to rename to base survival scene name
+        SceneManager.LoadScene("JesperScene");//Remeber to rename to base survival scene name
     }
 }

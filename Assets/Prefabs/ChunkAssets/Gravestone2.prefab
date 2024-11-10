@@ -118,9 +118,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.8798976}
+  m_Offset: {x: 0.008092105, y: 0.81999993}
   serializedVersion: 2
-  m_Radius: 0.81010246
+  m_Radius: 0.718802
 --- !u!114 &1611592785974825916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -141,16 +141,17 @@ MonoBehaviour:
   m_SelfShadows: 0
   m_ApplyToSortingLayers: 00000000
   m_ShapePath:
-  - {x: -0.49262857, y: -1.4153118, z: 0}
-  - {x: -0.44218838, y: 0.24488282, z: 0}
-  - {x: 0.22805333, y: 0.2829023, z: 0}
-  - {x: 0.50380325, y: 0.27189732, z: 0}
-  - {x: 0.47705626, y: -0.017440915, z: 0}
-  - {x: 0.50808835, y: -0.22046661, z: 0}
-  - {x: 0.45553422, y: -1.4187598, z: 0}
-  m_ShapePathHash: -1724344849
+  - {x: -0.49262857, y: 0.22980523, z: 0}
+  - {x: -0.50422215, y: 1.1485665, z: 0}
+  - {x: -0.47131288, y: 1.1604928, z: 0}
+  - {x: 0.25375056, y: 1.186981, z: 0}
+  - {x: 0.5038719, y: 1.148574, z: 0}
+  - {x: 0.4874065, y: 1.1400839, z: 0}
+  - {x: 0.49831128, y: 1.1466633, z: 0}
+  - {x: 0.45553422, y: 0.22635722, z: 0}
+  m_ShapePathHash: -571470059
   m_Mesh: {fileID: 0}
-  m_InstanceId: -1976482
+  m_InstanceId: 86298
   m_LocalBounds:
-    m_Center: {x: 0.007729888, y: -0.5679288, z: 0}
-    m_Extent: {x: 0.50035846, y: 0.85083103, z: 0}
+    m_Center: {x: -0.00017511845, y: 0.7066691, z: 0}
+    m_Extent: {x: 0.50404704, y: 0.48031187, z: 0}

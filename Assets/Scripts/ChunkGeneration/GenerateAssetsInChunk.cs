@@ -34,7 +34,7 @@ public class GenerateAssetsInChunk : MonoBehaviour
             {
                 if (chunkMatrix[i, j] != 6)
                 {
-                    Vector3 jittervector = new Vector3(Random.Range(-ChunkManager.objectSpawnDistance, ChunkManager.objectSpawnDistance), Random.Range(-ChunkManager.objectSpawnDistance, ChunkManager.objectSpawnDistance), 0);
+                    Vector3 jittervector = new Vector3(Random.Range(-ChunkManager.objectSpawnDistance/2, ChunkManager.objectSpawnDistance/2), Random.Range(-ChunkManager.objectSpawnDistance/2, ChunkManager.objectSpawnDistance/2), 0);
                     GameObject asset = Instantiate(chunkAssets[chunkMatrix[i, j]], transform.position + new Vector3((i - 4) * ObjectSpawnDistance, (j - 4) * ObjectSpawnDistance, 0) + jittervector, Quaternion.identity);//
                     asset.transform.parent = this.transform;
                 }
