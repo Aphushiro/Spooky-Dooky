@@ -7,7 +7,6 @@ public class PlayerChunkPosition : MonoBehaviour
     
     public GameObject currentChunk;
     public GameObject oldChunk;
-    float time = 0;
     private void Start()
     {
         currentChunk = ChunkManager.chunks[0];

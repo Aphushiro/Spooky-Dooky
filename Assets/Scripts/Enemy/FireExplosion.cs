@@ -17,7 +17,7 @@ public class FireExplosion : MonoBehaviour
             DamageEnemy();
         }
         // Play sound
-        Destroy(gameObject);
+        Destroy(gameObject, 0.25f);
     }
 
     private void DamageEnemy ()

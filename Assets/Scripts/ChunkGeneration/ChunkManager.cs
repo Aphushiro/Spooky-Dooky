@@ -16,11 +16,15 @@ public class ChunkManager : MonoBehaviour
     public int chunkSpawnDistanceEditable;
     public int objectSpawnDistanceEditable;
     public GameObject firstChunk;
-    private void Start()
+    private void Awake()
     {
         chunkSpawnDistance = chunkSpawnDistanceEditable;
         objectSpawnDistance = objectSpawnDistanceEditable;
         chunks.Add(firstChunk);
+    }
+
+    private void Start()
+    {
         chunkPosition.Add(firstChunk.transform.position);
         firstChunk.GetComponent<GenerateAround>().Generate();
         //ChunkManager.chunks.Add(firstChunk);

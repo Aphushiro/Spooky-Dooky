@@ -86,7 +86,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!114 &2191586294008282383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,7 +117,7 @@ MonoBehaviour:
   - {x: 4.5621204, y: -6.899568, z: 0}
   m_ShapePathHash: -926966065
   m_Mesh: {fileID: 0}
-  m_InstanceId: 75462
+  m_InstanceId: 46634
   m_LocalBounds:
     m_Center: {x: -0.015673637, y: -2.887475, z: 0}
     m_Extent: {x: 4.577794, y: 4.0779696, z: 0}

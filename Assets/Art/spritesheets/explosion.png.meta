@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 740db54a43b8aa34284338e3ba1f0e73
+guid: 5fce048fa8a3beb44bd7378af2566e3e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -110,64 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: idle_swipe_spritesheet_0
+      name: explosion_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 472
         y: 0
-        width: 600
-        height: 472
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 472
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d16a9c42efd8c8b40baec2f909f2e8c8
-      internalID: -1233725569
+      spriteID: 08c0d3bbcd7ac884caab7b725d6ba606
+      internalID: 1372784597
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_swipe_spritesheet_1
+      name: explosion_1
       rect:
         serializedVersion: 2
-        x: 600
+        x: 944
         y: 0
-        width: 600
-        height: 472
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 472
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: aee38d9799534fe47a45ba6758993e93
-      internalID: 1834446269
+      spriteID: 6869514bb52ed0d4a814b4fc68be8342
+      internalID: 1746908377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: idle_swipe_spritesheet_2
+      name: explosion_2
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1416
         y: 0
-        width: 600
-        height: 472
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 472
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2bc0706512062f44ea9c2cee9236daa8
-      internalID: -16219228
+      spriteID: 534b75a539784a0469fbe11c40f2fdde
+      internalID: -1184707912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion_3
+      rect:
+        serializedVersion: 2
+        x: 1888
+        y: 0
+        width: 472
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef8bc9643d703be4cb1044cacdf57684
+      internalID: -1864419211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion_4
+      rect:
+        serializedVersion: 2
+        x: 2360
+        y: 0
+        width: 472
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acc393a82b5f1b941844bdcf23c13386
+      internalID: -1489064369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: explosion_5
+      rect:
+        serializedVersion: 2
+        x: 2832
+        y: 0
+        width: 472
+        height: 439
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fec31d2a9e90d214b92ca511eb65f444
+      internalID: 980511675
       vertices: []
       indices: 
       edges: []
@@ -183,9 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      idle_swipe_spritesheet_0: -1233725569
-      idle_swipe_spritesheet_1: 1834446269
-      idle_swipe_spritesheet_2: -16219228
+      explosion_0: 1372784597
+      explosion_1: 1746908377
+      explosion_2: -1184707912
+      explosion_3: -1864419211
+      explosion_4: -1489064369
+      explosion_5: 980511675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

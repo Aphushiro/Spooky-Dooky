@@ -25,6 +25,7 @@ public class EnemyFireball : MonoBehaviour
 
         // Find direction of bullet
         rb.AddForce(target * bulletSpeed, ForceMode2D.Impulse);
+        rb.AddTorque(5);
         StartCoroutine(Explode());
     }
 

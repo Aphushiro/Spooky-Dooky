@@ -85,7 +85,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!58 &6176974335240439005
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   - {x: -0.0071947575, y: -1.042095, z: 0}
   m_ShapePathHash: -595187045
   m_Mesh: {fileID: 0}
-  m_InstanceId: 74326
+  m_InstanceId: 46660
   m_LocalBounds:
     m_Center: {x: -0.060571313, y: -0.55419123, z: 0}
     m_Extent: {x: 0.8983418, y: 0.54057, z: 0}
