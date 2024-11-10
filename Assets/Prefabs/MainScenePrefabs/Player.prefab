@@ -13,6 +13,12 @@ GameObject:
   - component: {fileID: 8323226211746205265}
   - component: {fileID: 8167569996705267996}
   - component: {fileID: 644425321732606691}
+  - component: {fileID: 4512766643749579644}
+  - component: {fileID: 6797507223667333511}
+  - component: {fileID: 1929711652786473385}
+  - component: {fileID: 6747649429246936757}
+  - component: {fileID: 7238810525276716727}
+  - component: {fileID: 61273790719062580}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -98,6 +104,7 @@ MonoBehaviour:
   friendlyFireball: {fileID: 1105131780168055993, guid: 1d78d9d42cb426741917239bb24ad23b, type: 3}
   attackType: 0
   blockAbility: 0
+  sfxPlayers: []
 --- !u!58 &644425321732606691
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -133,6 +140,101 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4512766643749579644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32907198545069612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a90ea4e0340f240ace5ee966cca895, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentChunk: {fileID: 0}
+  oldChunk: {fileID: 0}
+--- !u!114 &6797507223667333511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32907198545069612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153337ad4641c1449b50c6bf8fbc6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxObject: {fileID: 2917325885742931284, guid: 6b6cf21318df14745ad632d11c176e85, type: 3}
+  clips:
+  - {fileID: 8300000, guid: ce9c18f5c79e99548ae45e91fc22f076, type: 3}
+  pitch: 1
+--- !u!114 &1929711652786473385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32907198545069612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153337ad4641c1449b50c6bf8fbc6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxObject: {fileID: 2917325885742931284, guid: 6b6cf21318df14745ad632d11c176e85, type: 3}
+  clips:
+  - {fileID: 8300000, guid: bd4a17836543c4a49916ed3f24b87d7e, type: 3}
+  pitch: 1
+--- !u!114 &6747649429246936757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32907198545069612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153337ad4641c1449b50c6bf8fbc6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxObject: {fileID: 2917325885742931284, guid: 6b6cf21318df14745ad632d11c176e85, type: 3}
+  clips:
+  - {fileID: 8300000, guid: a50b5ac62c0a4c84a87476969ddb4133, type: 3}
+  - {fileID: 8300000, guid: 9cad8770fad016b4cb4dace22be2d156, type: 3}
+  pitch: 0
+--- !u!114 &7238810525276716727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32907198545069612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153337ad4641c1449b50c6bf8fbc6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxObject: {fileID: 2917325885742931284, guid: 6b6cf21318df14745ad632d11c176e85, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 8b61b807af32f9a46b51bd3bb610512e, type: 3}
+  pitch: 0
+--- !u!114 &61273790719062580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32907198545069612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a153337ad4641c1449b50c6bf8fbc6da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sfxObject: {fileID: 2917325885742931284, guid: 6b6cf21318df14745ad632d11c176e85, type: 3}
+  clips:
+  - {fileID: 8300000, guid: 4d7c5ce9d8ad71543a0ed04508cce0f2, type: 3}
+  pitch: 0
 --- !u!1 &5444430929619595289
 GameObject:
   m_ObjectHideFlags: 0
