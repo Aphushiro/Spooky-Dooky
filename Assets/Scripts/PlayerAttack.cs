@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
 {
     Vector3 cursorDiff;
     Vector3 cursorRotation;
+    Animator playerAnim;
 
     bool canAttack = true;
 
@@ -26,9 +27,11 @@ public class PlayerAttack : MonoBehaviour
     bool devourReady = true; // Independant of whether or not hunger is ready
     bool isDevouring = false;
 
+
+
     private void Start()
     {
-
+        playerAnim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -95,6 +98,7 @@ public class PlayerAttack : MonoBehaviour
     private IEnumerator DelayAttack(float seconds)
     {
         Punch();
+        playerAnim.SetTrigger("Swipe");
         yield return new WaitForSeconds(seconds);
         autoAttackBlock = false;
     }

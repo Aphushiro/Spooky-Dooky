@@ -18,7 +18,7 @@ public class EnemyFollow : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        spriteGfx = GetComponent<SpriteRenderer>();
+        spriteGfx = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -32,10 +32,10 @@ public class EnemyFollow : MonoBehaviour
 
         if (rb.velocity.x >= 0.01f)
         {
-            spriteGfx.flipX = true;
-        } else if (rb.velocity.x >= -0.01f)
-        {
             spriteGfx.flipX = false;
+        } else if (rb.velocity.x <= -0.01f)
+        {
+            spriteGfx.flipX = true;
         }
     }
 }

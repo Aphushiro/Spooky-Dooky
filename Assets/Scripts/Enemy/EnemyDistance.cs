@@ -20,7 +20,7 @@ public class EnemyDistance : MonoBehaviour
     {
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
-        spriteGfx = GetComponent<SpriteRenderer>();
+        spriteGfx = GetComponentInChildren<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -39,13 +39,13 @@ public class EnemyDistance : MonoBehaviour
 
         // Flip enemyGFX depending on direction
 
-        if (rb.velocity.x >= 0.01f)
-        {
-            spriteGfx.flipX = true;
-        }
-        else if (rb.velocity.x >= -0.01f)
+        if (rb.velocity.x >= 1f)
         {
             spriteGfx.flipX = false;
+        }
+        else if (rb.velocity.x <= -1f)
+        {
+            spriteGfx.flipX = true;
         }
     }
 }
