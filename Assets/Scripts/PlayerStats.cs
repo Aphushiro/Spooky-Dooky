@@ -22,7 +22,8 @@ public class PlayerStats : MonoBehaviour
     public AudioClip[] hurtSounds;
     public AudioClip[] dieSound;
 
-        // Stat upgrades count
+    public RectTransform hungerMeter;
+    // Stat upgrades count
     // Punch
     public int punch = 0;
 
@@ -114,6 +115,7 @@ public class PlayerStats : MonoBehaviour
     {
         totalDevour++;
         hunger = hungerScale + (hungerScale * totalDevour);
+        hungerMeter.GetComponent<HungerMeter>().maxHunger = hunger;
         punch++;
         // Upscale stats & Abilities?
     }
